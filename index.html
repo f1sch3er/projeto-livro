@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Antes Que o Dia Termine — Livro | Lance Livre</title>
+    <meta name="description" content="Compre 'Antes Que o Dia Termine' pelo valor que você achar justo. Um romance nostálgico sobre escolhas, estradas e o pôr do sol.">
+
+    <!-- Open Graph (prévia no WhatsApp/Instagram) -->
+    <meta property="og:title" content="Antes Que o Dia Termine — Pague quanto vale">
+    <meta property="og:description" content="Você decide o valor. Um livro sobre o que fazemos antes que o dia — e a vida — termine.">
+    <meta property="og:type" content="book">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --sunset-1: #f4a259;
+            --sunset-2: #e87a4f;
+            --sunset-3: #bc4b51;
+            --sunset-4: #5c3d55;
+            --sunset-5: #2d2a3d;
+            --warm-cream: #fef8f0;
+            --text-dark: #2d2a3d;
+            --text-soft: #5c5a66;
+            --white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--warm-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            overflow: hidden;
+            background: linear-gradient(
+                175deg,
+                #f4a259 0%,
+                #e87a4f 15%,
+                #bc4b51 35%,
+                #5c3d55 55%,
+                #2d2a3d 75%
+            );
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                /* mountains */
+                radial-gradient(ellipse 180% 50% at 20% 95%, rgba(45,42,61,0.9) 30%, transparent 60%),
+                radial-gradient(ellipse 140% 45% at 70% 92%, rgba(45,42,61,0.85) 25%, transparent 55%),
+                radial-gradient(ellipse 160% 40% at 50% 97%, rgba(45,42,61,0.95) 20%, transparent 50%),
+                /* clouds around mountains */
+                radial-gradient(ellipse 80px 30px at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 100px 25px at 55% 72%, rgba(255,255,255,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60px 20px at 75% 68%, rgba(255,255,255,0.10) 0%, transparent 70%),
+                /* sun glow */
+                radial-gradient(circle 200px at 50% 55%, rgba(244,162,89,0.5) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 620px;
+            color: #fff;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero .author {
+            font-size: 1.15rem;
+            font-style: italic;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            font-family: 'Georgia', serif;
+        }
+
+        .hero .tagline {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s ease infinite;
+            opacity: 0.7;
+        }
+
+        .scroll-hint span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* ===== BOOK SECTION ===== */
+        .book-showcase {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .cover-wrapper {
+            flex: 0 0 260px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(0,0,0,0.05);
+        }
+
+        .cover-img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+        }
+
+        .book-info {
+            flex: 1;
+            min-width: 260px;
+            padding-top: 10px;
+        }
+
+        .book-info h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .book-info .author-name {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--sunset-2);
+            margin-bottom: 20px;
+        }
+
+        .book-info .description {
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .book-details {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-soft);
+        }
+
+        .book-details .detail {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+        }
+
+        .pricing-section h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .pricing-section .subtitle {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+
+        .price-suggestions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .price-chip {
+            background: var(--warm-cream);
+            border: 2px solid transparent;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .price-chip:hover {
+            border-color: var(--sunset-2);
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232,122,79,0.2);
+        }
+
+        .price-chip.selected {
+            border-color: var(--sunset-2);
+            background: #fff;
+            color: var(--sunset-3);
+        }
+
+        .custom-price-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .custom-price-wrap label {
+            font-size: 0.95rem;
+            color: var(--text-soft);
+        }
+
+        .custom-price-wrap .currency {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .custom-price-wrap input {
+            width: 100px;
+            padding: 10px 14px;
+            border: 2px solid #e0dcd5;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-family: inherit;
+            background: var(--warm-cream);
+            transition: border-color 0.2s;
+        }
+
+        .custom-price-wrap input:focus {
+            outline: none;
+            border-color: var(--sunset-2);
+            background: #fff;
+        }
+
+        .checkout-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f4a259, #e87a4f);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 6px 24px rgba(232,122,79,0.35);
+            letter-spacing: 0.5px;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(232,122,79,0.45);
+        }
+
+        .checkout-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.78rem;
+            color: #999;
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-section h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .ig-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .ig-link:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(220,39,67,0.35);
+        }
+
+        .ig-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.8rem;
+            color: #bbb;
+            border-top: 1px solid #e8e4dc;
+        }
+
+        footer a { color: var(--sunset-2); text-decoration: none; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 90vh;
+                padding: 60px 20px;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                padding: 6px 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .author {
+                font-size: 1rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.9rem;
+                max-width: 300px;
+            }
+
+            main {
+                padding: 40px 16px;
+            }
+
+            .book-showcase {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-top: 40px;
+                gap: 24px;
+            }
+
+            .cover-wrapper {
+                flex: 0 0 200px;
+                max-width: 200px;
+                margin-bottom: 20px;
+            }
+
+            .book-info h2 {
+                font-size: 1.6rem;
+            }
+
+            .book-info .author-name {
+                font-size: 1rem;
+            }
+
+            .book-info .description {
+                font-size: 0.92rem;
+            }
+
+            .book-details {
+                justify-content: center;
+                font-size: 0.8rem;
+            }
+
+            .pricing-section {
+                padding: 28px 16px;
+                border-radius: 12px;
+            }
+
+            .pricing-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .pricing-section .subtitle {
+                font-size: 0.88rem;
+            }
+
+            .price-suggestions {
+                gap: 8px;
+            }
+
+            .price-chip {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+
+            .custom-price-wrap {
+                flex-wrap: wrap;
+                font-size: 0.9rem;
+            }
+
+            .custom-price-wrap input {
+                width: 90px;
+                font-size: 1rem;
+            }
+
+            .checkout-btn {
+                padding: 14px 36px;
+                font-size: 1.05rem;
+                width: 100%;
+            }
+
+            .social-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .ig-link {
+                padding: 10px 22px;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                font-size: 0.72rem;
+                padding: 24px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero {
+                min-height: 80vh;
+                padding: 40px 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .author {
+                font-size: 0.9rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.82rem;
+                max-width: 260px;
+            }
+
+            .cover-wrapper {
+                flex: 0 0 160px;
+                max-width: 160px;
+            }
+
+            .price-suggestions {
+                gap: 6px;
+            }
+
+            .price-chip {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .custom-price-wrap {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        /* ===== NOTIFICATION TOAST ===== */
+        .copied-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2d2a3d;
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .copied-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Capa e chamada principal">
+        <div class="hero-content">
+            <span class="hero-badge">Lançamento 2026</span>
+            <h1>Antes Que<br>o Dia Termine</h1>
+        </div>
+
+        <div class="scroll-hint"><span></span></div>
+    </section>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+        <!-- Livro: capa + info -->
+        <section class="book-showcase">
+            <div class="cover-wrapper">
+                <!-- ═══════════════════════════════════════ -->
+                <!-- SUBSTITUA O src PELA IMAGEM DA CAPA -->
+                <!-- ═══════════════════════════════════════ -->
+                <img
+                    class="cover-img"
+                    src="capa.jpg"
+                    alt="Capa do livro: homem caminhando em estrada ao pôr do sol com serras no horizonte"
+                    loading="eager"
+                >
+            </div>
+
+            <div class="book-info">
+                <h2>Antes Que o Dia Termine</h2>
+                <p class="description">
+                    Não escrevi este livro para ensinar como viver. Escrevi para lembrar
+                    que, mesmo nos dias mais difíceis, ainda podemos encontrar um motivo
+                    para seguir, porque a vida raramente nos dá tempo para voltar atrás.
+                    Mas sempre nos oferece a chance de seguir em frente com mais sabedoria.
+                    <br><br>
+                    Que esta história seja um lembrete de que ainda há luz, enquanto o
+                    dia não termina.
+                </p>
+                <div class="book-details">
+                    <span class="detail">📄 99 páginas</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download gratuito -->
+        <section class="pricing-section" id="baixar">
+            <h3>📖 Baixe grátis</h3>
+            <p class="subtitle">
+                Este livro é uma obra de coração, feita para chegar até você.
+                Clique abaixo, baixe e boa leitura.
+            </p>
+
+            <!-- ═══════════════════════════════════════ -->
+            <!-- BOTÃO DE DOWNLOAD (link do Google Drive) -->
+            <!-- ═══════════════════════════════════════ -->
+            <a
+                class="checkout-btn"
+                href="https://drive.google.com/uc?export=download&id=1bkOCUsOG7JWxnyEOfqV7LTNhLFmRUzeY"
+                target="_blank"
+                rel="noopener"
+            >
+                📥 Baixar o livro grátis
+            </a>
+
+            <p class="secure-badge">
+                📄 PDF gratuito — sem cadastro, sem pagamento
+            </p>
+        </section>
+
+        <!-- Instagram -->
+        <section class="social-section">
+            <h3>Acompanhe o autor no Instagram</h3>
+            <!-- ═══════════════════════════════════════════════ -->
+            <!-- TROQUE O href PELO PERFIL DO INSTAGRAM -->
+            <!-- ═══════════════════════════════════════════════ -->
+            <a
+                class="ig-link"
+                href="https://www.instagram.com/ribeirojonathan0701"
+                target="_blank"
+                rel="noopener"
+            >
+                <!-- Ícone Instagram -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.67.5a5.37 5.37 0 011.94 1.26 5.37 5.37 0 011.26 1.94c.26.7.45 1.5.5 2.67.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.5 2.67a5.37 5.37 0 01-1.26 1.94 5.37 5.37 0 01-1.94 1.26c-.7.26-1.5.45-2.67.5-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.67-.5a5.37 5.37 0 01-1.94-1.26 5.37 5.37 0 01-1.26-1.94c-.26-.7-.45-1.5-.5-2.67-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.97.5-2.67a5.37 5.37 0 011.26-1.94 5.37 5.37 0 011.94-1.26c.7-.26 1.5-.45 2.67-.5C8.42 2.17 8.8 2.16 12 2.16z"/>
+                    <circle cx="12" cy="12" r="3.8" fill="#fff" stroke="#fff" stroke-width=".4"/>
+                    <circle cx="17.3" cy="6.7" r="1.1" fill="#fff"/>
+                </svg>
+                @ribeirojonathan0701
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Antes Que o Dia Termine &nbsp;·&nbsp;
+        Feito com ❤️ &nbsp;·&nbsp;
+        <a href="mailto:jonathanrbeiro93@gmail.com">jonathanrbeiro93@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://wa.me/5513991985590?text=Ol%C3%A1%2C%20Jonathan!%20Vim%20atrav%C3%A9s%20do%20seu%20livro%20e%20gostaria%20de%20conversar%20sobre" target="_blank" rel="noopener">WhatsApp (13) 99198-5590</a>
+    </footer>
+
+    <!-- Toast de feedback -->
+    <div class="copied-toast" id="toast"></div>
+
+    <script>
+        /* ===== DOWNLOAD + DOAÇÃO ===== */
+        // O download já abre direto o link do Google Drive (definido no HTML).
+        // A doação opcional é um Payment Link do Stripe ("o cliente escolhe o valor").
+        // Tudo configurado no HTML — nenhum JS extra é necessário.
+
+        /* ===== TOAST ===== */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        /* ===== SCROLL SUAVE PARA LINKS INTERNOS ===== */
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
