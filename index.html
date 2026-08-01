@@ -346,6 +346,147 @@
             transform: translateY(-1px);
         }
 
+        /* ===== MODAL DE APOIO ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(45,42,61,0.65);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 200;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 480px;
+            width: 100%;
+            padding: 36px 30px 26px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+            animation: modalIn 0.25s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: #c3beb4;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover { color: var(--text-dark); }
+
+        .modal h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .modal .modal-subtitle {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .modal .price-suggestions { margin-bottom: 16px; }
+
+        .modal .custom-price-wrap { margin-bottom: 16px; }
+
+        .modal .donate-modal-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #f4a259, #e87a4f);
+            color: #fff;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            box-shadow: 0 6px 20px rgba(232,122,79,0.35);
+            box-sizing: border-box;
+        }
+
+        .modal .donate-modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(232,122,79,0.45);
+        }
+
+        .modal .modal-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+            color: #c3beb4;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+        }
+
+        .modal .modal-divider::before,
+        .modal .modal-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .modal .skip-btn {
+            display: block;
+            width: 100%;
+            background: var(--warm-cream);
+            color: var(--text-dark);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 50px;
+            border: 2px solid #e0dcd5;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .modal .skip-btn:hover {
+            border-color: var(--sunset-2);
+            color: var(--sunset-3);
+            background: #fff;
+        }
+
+        .modal .modal-note {
+            margin-top: 14px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.75rem;
+            color: #bbb;
+        }
+
         .secure-badge {
             display: flex;
             align-items: center;
@@ -630,14 +771,15 @@
             <h3>📖 Baixe grátis</h3>
             <p class="subtitle">
                 Este livro é uma obra de coração, feita para chegar até você.
-                Clique abaixo, baixe e boa leitura.
+                Clique no botão abaixo, baixe e boa leitura.
             </p>
 
             <!-- ═══════════════════════════════════════ -->
-            <!-- BOTÃO DE DOWNLOAD (link do Google Drive) -->
+            <!-- BOTÃO DE DOWNLOAD (abre o modal de apoio) -->
             <!-- ═══════════════════════════════════════ -->
             <a
                 class="checkout-btn"
+                id="downloadBtn"
                 href="https://drive.google.com/uc?export=download&id=1bkOCUsOG7JWxnyEOfqV7LTNhLFmRUzeY"
                 target="_blank"
                 rel="noopener"
@@ -682,14 +824,121 @@
         <a href="https://wa.me/5513991985590?text=Ol%C3%A1%2C%20Jonathan!%20Vim%20atrav%C3%A9s%20do%20seu%20livro%20e%20gostaria%20de%20conversar%20sobre" target="_blank" rel="noopener">WhatsApp (13) 99198-5590</a>
     </footer>
 
+    <!-- ═══════════════ MODAL DE APOIO OPCIONAL ═══════════════ -->
+    <div class="modal-overlay" id="supportModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+
+            <h3 id="modalTitle">💛 Gostou do livro?</h3>
+            <p class="modal-subtitle">
+                O livro é gratuito — mas se você quiser apoiar o autor,
+                escolha um valor abaixo. Caso contrário, siga direto para o download.
+            </p>
+
+            <div class="price-suggestions" id="modalPriceSuggestions">
+                <button class="price-chip" data-value="5">R$ 5</button>
+                <button class="price-chip selected" data-value="10">R$ 10</button>
+                <button class="price-chip" data-value="20">R$ 20</button>
+                <button class="price-chip" data-value="50">R$ 50</button>
+            </div>
+
+            <div class="custom-price-wrap">
+                <label for="modalCustomPrice">Ou digite:</label>
+                <span class="currency">R$</span>
+                <input
+                    type="number"
+                    id="modalCustomPrice"
+                    placeholder="15"
+                    min="1"
+                    step="1"
+                    aria-label="Digite o valor que deseja doar"
+                >
+            </div>
+
+            <!-- ═══════════════════════════════════════════════ -->
+            <!-- TROQUE O href PELO SEU LINK DE DOAÇÃO DO STRIPE -->
+            <!-- ═══════════════════════════════════════════════ -->
+            <a
+                class="donate-modal-btn"
+                id="donateModalBtn"
+                href="https://buy.stripe.com/SEU_LINK_AQUI"
+                target="_blank"
+                rel="noopener"
+            >
+                💛 Doar este valor
+            </a>
+
+            <div class="modal-divider">ou</div>
+
+            <button class="skip-btn" id="skipDownloadBtn">
+                📥 Não, só quero baixar o livro grátis
+            </button>
+
+            <p class="modal-note">O download é sempre gratuito, com ou sem doação. 💙</p>
+        </div>
+    </div>
+
     <!-- Toast de feedback -->
     <div class="copied-toast" id="toast"></div>
 
     <script>
-        /* ===== DOWNLOAD + DOAÇÃO ===== */
-        // O download já abre direto o link do Google Drive (definido no HTML).
-        // A doação opcional é um Payment Link do Stripe ("o cliente escolhe o valor").
-        // Tudo configurado no HTML — nenhum JS extra é necessário.
+        /* ===== MODAL DE APOIO ===== */
+        const downloadBtn = document.getElementById('downloadBtn');
+        const supportModal = document.getElementById('supportModal');
+        const modalClose = document.getElementById('modalClose');
+        const skipBtn = document.getElementById('skipDownloadBtn');
+        const modalChips = document.querySelectorAll('#modalPriceSuggestions .price-chip');
+        const modalCustomInput = document.getElementById('modalCustomPrice');
+
+        // Mesmo link do botão principal de download
+        const DOWNLOAD_URL = document.getElementById('downloadBtn').href;
+
+        function openModal() {
+            supportModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            supportModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Botão principal: abre o modal em vez de baixar direto
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+
+        modalClose.addEventListener('click', closeModal);
+
+        // Clicou fora do modal (no fundo escuro) → fecha
+        supportModal.addEventListener('click', (e) => {
+            if (e.target === supportModal) closeModal();
+        });
+
+        // Tecla ESC → fecha
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Chips de valor
+        modalChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                modalChips.forEach(c => c.classList.remove('selected'));
+                chip.classList.add('selected');
+                modalCustomInput.value = '';
+            });
+        });
+
+        modalCustomInput.addEventListener('input', () => {
+            modalChips.forEach(c => c.classList.remove('selected'));
+        });
+
+        // "Só quero baixar" → fecha o modal e abre o download
+        skipBtn.addEventListener('click', () => {
+            closeModal();
+            window.open(DOWNLOAD_URL, '_blank', 'noopener');
+        });
 
         /* ===== TOAST ===== */
         function showToast(msg) {

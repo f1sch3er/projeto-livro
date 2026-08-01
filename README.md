@@ -65,6 +65,8 @@ git commit -m "ajustes"
 git push
 ```
 
-> 🔗 **Download do livro:** o botão "📥 Baixar o livro grátis" usa o link direto do Google Drive. Se um dia quiser trocar o arquivo, substitua o `href` (formato `https://drive.google.com/uc?export=download&id=SEU_ID`).
+> 🔗 **Download do livro:** o botão "📥 Baixar o livro grátis" abre um **modal de apoio opcional** (doar ou baixar grátis). O download usa o link direto do Google Drive. Se um dia quiser trocar o arquivo, substitua o `href` (formato `https://drive.google.com/uc?export=download&id=SEU_ID`).
+
+> 💛 **Doação opcional (no modal):** o botão "Doar este valor" aponta para `https://buy.stripe.com/SEU_LINK_AQUI` (placeholder). Para ativar, crie um **Payment Link** no Stripe ("o cliente escolhe o valor", mínimo R$ 1) e troque o `href` do botão `#donateModalBtn` no `index.html`.
 
 > 🔓 **Importante:** no Google Drive, deixe o arquivo com permissão **"Qualquer pessoa com o link"** para leitura — senão o download pede login.
