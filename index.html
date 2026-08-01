@@ -248,41 +248,6 @@
             margin-bottom: 28px;
         }
 
-        .price-suggestions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-        }
-
-        .price-chip {
-            background: var(--warm-cream);
-            border: 2px solid transparent;
-            padding: 14px 24px;
-            border-radius: 50px;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.2s;
-            user-select: none;
-        }
-
-        .price-chip:hover {
-            border-color: var(--sunset-2);
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(232,122,79,0.2);
-        }
-
-        .price-chip.selected {
-            border-color: var(--sunset-2);
-            background: #fff;
-            color: var(--sunset-3);
-        }
-
         .custom-price-wrap {
             display: flex;
             align-items: center;
@@ -411,8 +376,6 @@
             line-height: 1.6;
             margin-bottom: 22px;
         }
-
-        .modal .price-suggestions { margin-bottom: 16px; }
 
         .modal .custom-price-wrap { margin-bottom: 16px; }
 
@@ -617,15 +580,6 @@
                 font-size: 0.88rem;
             }
 
-            .price-suggestions {
-                gap: 8px;
-            }
-
-            .price-chip {
-                padding: 10px 16px;
-                font-size: 0.95rem;
-            }
-
             .custom-price-wrap {
                 flex-wrap: wrap;
                 font-size: 0.9rem;
@@ -679,15 +633,6 @@
             .cover-wrapper {
                 flex: 0 0 160px;
                 max-width: 160px;
-            }
-
-            .price-suggestions {
-                gap: 6px;
-            }
-
-            .price-chip {
-                padding: 8px 12px;
-                font-size: 0.85rem;
             }
 
             .custom-price-wrap {
@@ -831,19 +776,12 @@
 
             <h3 id="modalTitle">💛 Gostou do livro?</h3>
             <p class="modal-subtitle">
-                O livro é gratuito — mas se você quiser apoiar o autor,
-                escolha um valor abaixo. Caso contrário, siga direto para o download.
+                O livro é gratuito — mas se quiser apoiar o autor,
+                digite um valor abaixo. Caso contrário, siga direto para o download.
             </p>
 
-            <div class="price-suggestions" id="modalPriceSuggestions">
-                <button class="price-chip" data-value="5">R$ 5</button>
-                <button class="price-chip selected" data-value="10">R$ 10</button>
-                <button class="price-chip" data-value="20">R$ 20</button>
-                <button class="price-chip" data-value="50">R$ 50</button>
-            </div>
-
             <div class="custom-price-wrap">
-                <label for="modalCustomPrice">Ou digite:</label>
+                <label for="modalCustomPrice">Digite o valor da doação:</label>
                 <span class="currency">R$</span>
                 <input
                     type="number"
@@ -887,7 +825,6 @@
         const supportModal = document.getElementById('supportModal');
         const modalClose = document.getElementById('modalClose');
         const skipBtn = document.getElementById('skipDownloadBtn');
-        const modalChips = document.querySelectorAll('#modalPriceSuggestions .price-chip');
         const modalCustomInput = document.getElementById('modalCustomPrice');
 
         // Mesmo link do botão principal de download
@@ -919,19 +856,6 @@
         // Tecla ESC → fecha
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
-        });
-
-        // Chips de valor
-        modalChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                modalChips.forEach(c => c.classList.remove('selected'));
-                chip.classList.add('selected');
-                modalCustomInput.value = '';
-            });
-        });
-
-        modalCustomInput.addEventListener('input', () => {
-            modalChips.forEach(c => c.classList.remove('selected'));
         });
 
         // "Só quero baixar" → fecha o modal e abre o download
